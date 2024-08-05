@@ -37,7 +37,7 @@ const ResetPasswordPage = () => {
       console.log(res.message);
       toast.success(`${res?.message}`);
       setTimeout(() => {
-        navigate("/login");  
+        navigate("/login");
       }, 2000);
     } catch (error) {
       toast.error(`${error?.data?.error}`);

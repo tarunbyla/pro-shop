@@ -4,18 +4,23 @@ import updateCartItems from "../utils/updateCartItems";
 
 const initialState = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
-  : { cartItems: [], wishList: [], shippingAddress: {}, paymentMethod: "PayPal" };
+  : {
+      cartItems: [],
+      wishList: [],
+      shippingAddress: {},
+      paymentMethod: "PayPal",
+    };
 
 export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
-      state.cartItems = updateCartItems(state.cartItems, item)
+      state.cartItems = updateCartItems(state.cartItems, item);
       return updateCart(state);
     },
     addToWishList: (state, action) => {
       const item = action.payload;
-      state.wishList = updateCartItems(state.wishList, item)
+      state.wishList = updateCartItems(state.wishList, item);
       return updateCart(state);
     },
     removeFromCart: (state, action) => {
@@ -36,12 +41,12 @@ export const cartSlice = createSlice({
       state.paymentMethod = action.payload;
       return updateCart(state);
     },
-    clearCart: (state, action) => {
+    clearCart: (state) => {
       state.cartItems = [];
       return updateCart(state);
     },
     saveCart: (state, action) => {
-      const { cartItems, wishList } = action.payload
+      const { cartItems, wishList } = action.payload;
       state.cartItems = cartItems;
       state.wishList = wishList;
       return updateCart(state);
@@ -55,7 +60,8 @@ export default cartSlice.reducer;
 export const {
   addToCart,
   removeFromCart,
-  addToWishList, removeFromWishList,
+  addToWishList,
+  removeFromWishList,
   saveShippingAddress,
   savePaymentMethod,
   clearCart,

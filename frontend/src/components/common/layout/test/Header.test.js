@@ -20,7 +20,7 @@ describe("Header Component", () => {
           <Router>
             <Header />
           </Router>
-        </Provider>
+        </Provider>,
       );
       expect(screen.getByAltText("ProShop")).toBeInTheDocument();
       expect(screen.getByText("ProShop")).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe("Header Component", () => {
           <Router>
             <Header />
           </Router>
-        </Provider>
+        </Provider>,
       );
 
       expect(screen.getByAltText("ProShop")).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe("Header Component", () => {
         <Router>
           <Header />
         </Router>
-      </Provider>
+      </Provider>,
     );
 
     expect(screen.getByAltText("ProShop")).toBeInTheDocument();
@@ -80,7 +80,7 @@ describe("Header Component", () => {
         <Router>
           <Header />
         </Router>
-      </Provider>
+      </Provider>,
     );
 
     fireEvent.click(screen.getByText("John Doe"));

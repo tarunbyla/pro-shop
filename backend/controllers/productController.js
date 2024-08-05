@@ -28,7 +28,7 @@ export const getProduct = asyncHandler(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
     return next(
-      new errorResponse(`No product found for ID : ${req.params.id}`, 404)
+      new errorResponse(`No product found for ID : ${req.params.id}`, 404),
     );
   }
   res.status(200).json(product);
@@ -83,7 +83,7 @@ export const updateProduct = asyncHandler(async (req, res, next) => {
 
   const updatedProduct = await product.save();
 
-  res.status(200).json(updateProduct);
+  res.status(200).json(updatedProduct);
 });
 
 //@desc add a review
@@ -97,12 +97,12 @@ export const addProductReview = asyncHandler(async (req, res, next) => {
   }
 
   const alreadyReviewed = product.reviews.find(
-    (review) => review.user.toString() === req.user._id.toString()
+    (review) => review.user.toString() === req.user._id.toString(),
   );
 
   if (alreadyReviewed) {
     return next(
-      new errorResponse("you have already reviewed this product", 400)
+      new errorResponse("you have already reviewed this product", 400),
     );
   }
 

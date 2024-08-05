@@ -6,8 +6,6 @@ const createInvoice = () => {
   let doc = new PDFDocument({ size: "A4", margin: 50 });
 
   return doc;
-
-
 };
 
 export const generateHeader = (doc) => {
@@ -52,7 +50,7 @@ export const generateCustomerInformation = (doc, invoice) => {
         // ", " +
         invoice.shippingAddress?.country,
       300,
-      customerInformationTop + 30
+      customerInformationTop + 30,
     )
     .moveDown();
 
@@ -71,7 +69,7 @@ export const generateInvoiceTable = (doc, invoice) => {
     "",
     "Unit Cost",
     "Quantity",
-    "Line Total"
+    "Line Total",
   );
   generateHr(doc, invoiceTableTop + 20);
   doc.font("Helvetica");
@@ -86,7 +84,7 @@ export const generateInvoiceTable = (doc, invoice) => {
       "",
       formatCurrency(item.price),
       item.qty,
-      formatCurrency(item.price * item.qty)
+      formatCurrency(item.price * item.qty),
     );
 
     generateHr(doc, position + 20);
@@ -100,7 +98,7 @@ export const generateInvoiceTable = (doc, invoice) => {
     "",
     "Subtotal",
     "",
-    formatCurrency(invoice.itemsPrice)
+    formatCurrency(invoice.itemsPrice),
   );
   const taxPosition = subtotalPosition + 20;
   generateTableRow(
@@ -110,7 +108,7 @@ export const generateInvoiceTable = (doc, invoice) => {
     "",
     "Tax",
     "",
-    formatCurrency(invoice.taxPrice)
+    formatCurrency(invoice.taxPrice),
   );
   const shippingPosition = taxPosition + 20;
   generateTableRow(
@@ -120,7 +118,7 @@ export const generateInvoiceTable = (doc, invoice) => {
     "",
     "Shipping",
     "",
-    formatCurrency(invoice.shippingPrice)
+    formatCurrency(invoice.shippingPrice),
   );
   const totalPricePosition = shippingPosition + 20;
   generateTableRow(
@@ -130,7 +128,7 @@ export const generateInvoiceTable = (doc, invoice) => {
     "",
     "Total",
     "",
-    formatCurrency(invoice.totalPrice)
+    formatCurrency(invoice.totalPrice),
   );
 
   //   const paidToDatePosition = subtotalPosition + 20;
@@ -165,7 +163,7 @@ export const generateFooter = (doc) => {
       "Payment is due within 15 days. Thank you for your business.",
       50,
       780,
-      { align: "center", width: 500 }
+      { align: "center", width: 500 },
     );
 };
 
@@ -176,7 +174,7 @@ export const generateTableRow = (
   description,
   unitCost,
   quantity,
-  lineTotal
+  lineTotal,
 ) => {
   doc
     .fontSize(10)

@@ -31,7 +31,7 @@ export const createOrder = asyncHandler(async (req, res, next) => {
   // map over the order items and use the price from our items from database
   const dbOrderItems = orderItems.map((itemFromClient) => {
     const matchingItemFromDB = itemsFromDB.find(
-      (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
+      (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id,
     );
     return {
       ...itemFromClient,
@@ -78,7 +78,7 @@ export const getMyOrders = asyncHandler(async (req, res, next) => {
 export const getOrderById = asyncHandler(async (req, res, next) => {
   const order = await Order.findById(req.params.id).populate(
     "user",
-    "name email"
+    "name email",
   );
 
   if (!order) {
@@ -162,7 +162,7 @@ export const generateOrderInvoice = asyncHandler(async (req, res, next) => {
     // Fetch the order by ID and populate the user information
     const order = await Order.findById(req.params.id).populate(
       "user",
-      "name email"
+      "name email",
     );
 
     // Create a new PDF document
@@ -178,7 +178,7 @@ export const generateOrderInvoice = asyncHandler(async (req, res, next) => {
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename=invoice_${order._id}.pdf`
+      `attachment; filename=invoice_${order._id}.pdf`,
     );
 
     // Pipe the PDF to the response
@@ -207,7 +207,7 @@ export const generateOrderInvoice = asyncHandler(async (req, res, next) => {
           content: attachment,
           contentType: "application/pdf",
         },
-      ]
+      ],
     );
 
     // Optionally save a copy of the PDF to the filesystem

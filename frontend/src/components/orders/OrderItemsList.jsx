@@ -23,7 +23,7 @@ const OrderItemsList = ({ items }) => {
                 <Link to={`/product/${item._id}`}>{item.name}</Link>
               </Col>
               <Col md={4}>
-                {rupee.format(item.price)} x {item.qty} = 
+                {rupee.format(item.price)} x {item.qty} =
                 {rupee.format((item.price * item.qty).toFixed(2))}
               </Col>
             </Row>

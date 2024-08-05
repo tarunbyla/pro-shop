@@ -11,7 +11,7 @@ import {
   updateUserById,
   forgotPassword,
   updatePassword,
-  resetPassword
+  resetPassword,
 } from "../controllers/userController.js";
 
 import { protect, admin } from "../middleware/authMiddleware.js";
@@ -40,6 +40,5 @@ router
 router.route("/forgotPassword").post(forgotPassword);
 
 router.route("/resetPassword/:resetToken").put(resetPassword);
-
 
 export default router;

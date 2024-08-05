@@ -36,8 +36,6 @@ import LoginWithOTP from "./pages/LoginWithOTP";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 
-
-
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -71,8 +69,8 @@ const routes = createBrowserRouter(
         <Route path="/admin/users/:id/edit" element={<EditUsers />} />
         <Route path="/admin/products/:id/edit" element={<EditProduct />} />
       </Route>
-    </Route>
-  )
+    </Route>,
+  ),
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -83,7 +81,7 @@ root.render(
         <RouterProvider router={routes} />
       </Provider>
     </HelmetProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 reportWebVitals();

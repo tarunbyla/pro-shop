@@ -39,7 +39,11 @@ const CheckoutSteps = ({ step }) => {
         )}
       </Nav> */}
 
-      <Stepper activeStep={steps.indexOf(step)} className="my-5" alternativeLabel>
+      <Stepper
+        activeStep={steps.indexOf(step)}
+        className="my-5"
+        alternativeLabel
+      >
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

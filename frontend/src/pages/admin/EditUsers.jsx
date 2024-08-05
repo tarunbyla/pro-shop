@@ -11,7 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const EditUsers = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -35,9 +35,9 @@ const EditUsers = () => {
     try {
       await updateUser({ id, name, email, isAdmin }).unwrap();
       toast.success("User updated successfully");
-      navigate("/admin/users")
+      navigate("/admin/users");
     } catch (error) {
-        toast.error(`${error?.data?.error}`)
+      toast.error(`${error?.data?.error}`);
     }
   };
 

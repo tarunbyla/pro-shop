@@ -13,6 +13,8 @@ import cookieParser from "cookie-parser";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger-output.json" assert { type: "json" };
 import cors from "cors";
+import cron from "node-cron";
+import sendNewsLetter from "./utils/newsLetter/sendNewsLetter.js";
 
 dotenv.config();
 
@@ -33,6 +35,12 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 //cookie parser
 app.use(cookieParser());
+
+// //cron job
+// cron.schedule("*/2 * * * *", () => {
+//   console.log("Running newsletter job every 2 minutes...");
+//   sendNewsLetter();
+// });
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
@@ -63,6 +71,6 @@ app.use(errorHandler);
 
 app.listen(port, () =>
   console.log(
-    `Server started running in ${process.env.NODE_ENV} mode on port ${port}`
-  )
+    `Server started running in ${process.env.NODE_ENV} mode on port ${port}`,
+  ),
 );

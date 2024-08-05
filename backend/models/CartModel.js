@@ -25,7 +25,7 @@ const cartSchema = new mongoose.Schema(
     cartItems: [productSchema],
     wishList: [productSchema],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Cart = mongoose.model("Cart", cartSchema);

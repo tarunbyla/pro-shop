@@ -16,7 +16,7 @@ const SearchBox = () => {
   };
   return (
     <Form onSubmit={submitHandler} className="d-flex">
-      <InputGroup >
+      <InputGroup>
         <Form.Control
           type="text"
           placeholder="search..."
@@ -27,8 +27,6 @@ const SearchBox = () => {
         <Button type="submit" className="btn btn-light">
           Search
         </Button>
-
-
       </InputGroup>
     </Form>
   );

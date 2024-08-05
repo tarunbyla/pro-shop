@@ -25,7 +25,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
     try {
       await sendMail(
         { email: user.email, subject: "Login Successfull" },
-        loginPath
+        loginPath,
       );
     } catch (error) {
       console.log(error);
@@ -67,7 +67,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   const createdCart = await cart.save();
   if (!createdCart) {
     return next(
-      new errorResponse("An Issue Occured, Please try again later!", 500)
+      new errorResponse("An Issue Occured, Please try again later!", 500),
     );
   }
 
@@ -188,7 +188,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new errorResponse(`No user found with email ${req.body.email}`, 400)
+      new errorResponse(`No user found with email ${req.body.email}`, 400),
     );
   }
 
@@ -201,7 +201,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
   //create reset url
   const resetURL = `${req.protocol}://${req.get(
-    "host"
+    "host",
   )}/api/v1/auth/resetPassword/${resetToken}`;
 
   const message = `you are reciving this mail for resetting your password, your security token is ${resetToken}`;

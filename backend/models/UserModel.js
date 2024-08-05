@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema(
     otpExpire: Date,
     isAdmin: { type: Boolean, required: true, default: false },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
